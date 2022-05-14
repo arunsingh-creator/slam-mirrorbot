@@ -1,6 +1,3 @@
-# -*- coding: utf-8 -*-
-# (c) YashDK [yash-dk@github]
-
 from anytree import NodeMixin, RenderTree, PreOrderIter
 import qbittorrentapi as qba
 
@@ -31,27 +28,12 @@ def get_folders(path):
 
 
 def make_tree(res):
-    """This function takes the list of all the torrent files. The files are name hierarchically.
-        Felt a need to document to save time.
-
-    Args:
-        res (list): Torrent files list.
-
-    Returns:
-        TorNode: Parent node of the tree constructed and can be used further.
-    """
     parent = TorNode("Torrent")
     for l, i in enumerate(res):
         # Get the hierarchy of the folders by splitting based on '/'
         folders = get_folders(i.name)
         # Check if the file is alone for if its in folder
         if len(folders) > 1:
-            # Enter here if in folder
-
-            # Set the parent 
-            previous_node = parent
-
-            # Traverse till second last assuming the last is a file.
             for j in range(len(folders)-1):
                 current_node = None
 
